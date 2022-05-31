@@ -47,41 +47,92 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
 
+1.Start the module using module projname().
 
+2.Declare the inputs and outputs along with the select lines according to the multiplexer and demultiplexer.
+
+3.Use wire to assign intermediate outputs.
+
+4.Use and,or and not gates to get the desired output.
+
+5.End the module.
+
+6.Generate RTL realization and timing diagrams.
 
 ### PROGRAM 
-/*
+~~~
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+
+Developed by:  v.charan sai
+RegisterNumber: 212221230061
 
 
+### 4x1 MULTIPLEXER:
+module MUX(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+wire P,Q,R,S;
+and(P,S0C,S1C,I0);
+and(Q,S0C,S1,I1);
+and(R,S0,S1C,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+
+## 1x4 DE MULTIPLEXER:
+
+module DEMUX(Y0,Y1,Y2,Y3,S0,S1,I);
+input S0,S1,I;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
+~~~
 
 
-
-
+## OUTPUT:
+### 4x1 MULTIPLEXER:
 ### RTL LOGIC  
-
-
-
-
-
-
+![1](https://user-images.githubusercontent.com/94296221/171119724-e5bf9d9e-041c-4dc9-9228-12cfe36a3731.png)
 
 
 ### TIMING DIGRAMS  
+![2](https://user-images.githubusercontent.com/94296221/171119738-097634f8-3cb9-4de0-a54d-2a0ef615a655.png)
+![3](https://user-images.githubusercontent.com/94296221/171119748-5bf40cb7-117a-4573-9c8f-e99cb6cbe61b.png)
+![4](https://user-images.githubusercontent.com/94296221/171119761-f3b567ac-6630-4dac-9d66-5f468893a300.png)
+![5](https://user-images.githubusercontent.com/94296221/171119820-ac5803f4-ce14-483f-8638-6385fc4bf22a.png)
 
 
 
 
 
 ### TRUTH TABLE 
+![6](https://user-images.githubusercontent.com/94296221/171119904-17a9b109-5bd0-47e3-84f8-3d59de4019e6.png)
+
+
+### 1x4 DE MULTIPLEXER:
+### RTL LOGIC:
+![7](https://user-images.githubusercontent.com/94296221/171119855-474b0cf2-0e7f-4726-9894-8ebd34a398b9.png)
+
+### TIMING DIGRAMS  
+
+![8](https://user-images.githubusercontent.com/94296221/171119847-01c71c91-91f5-45ab-9631-5909a6e06702.png)
 
 
 
+
+### TRUTH TABLE 
+
+![9](https://user-images.githubusercontent.com/94296221/171119837-23ce9b17-e5b5-4ba8-9b5c-afb0920a34b0.png)
 
 
 
